@@ -233,7 +233,15 @@ export interface CronProps {
    */
   getPopupContainer?: () => HTMLElement
 
-  customDropdown?: () => ReactNode
+  renderDropdown?: (props: DropdownProps) => ReactNode
+}
+
+export interface DropdownProps<V = any, O = any> {
+  defaultValue: V
+  value: V
+  onChange: ((value: V, option?: O | O[] | undefined) => void) | undefined
+  options: O[]
+  disabled?: boolean
 }
 export interface Locale {
   everyText?: string
@@ -370,6 +378,7 @@ export interface PeriodProps
   shortcuts: Shortcuts
   allowedPeriods: PeriodType[]
   getPopupContainer?: () => HTMLElement
+  renderDropdown?: (props: DropdownProps) => ReactNode
 }
 export interface MonthsProps extends FieldProps {
   humanizeLabels: boolean

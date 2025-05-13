@@ -62,7 +62,7 @@ export default function Cron(props: CronProps) {
     allowClear,
     dropdownsConfig,
     getPopupContainer,
-    customDropdown
+    renderDropdown
   } = props
   const internalValueRef = useRef<string>(value)
   const defaultPeriodRef = useRef<PeriodType>(defaultPeriod)
@@ -295,6 +295,7 @@ export default function Cron(props: CronProps) {
           allowedPeriods={allowedPeriods}
           allowClear={dropdownsConfig?.period?.allowClear ?? allowClear}
           getPopupContainer={getPopupContainer}
+          renderDropdown={renderDropdown}
         />
       )}
 

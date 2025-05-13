@@ -18,6 +18,7 @@ export default function Period(props: PeriodProps) {
     allowedPeriods,
     allowClear,
     getPopupContainer,
+    renderDropdown
   } = props
   const options: BaseOptionType[] = []
 
@@ -121,21 +122,29 @@ export default function Period(props: PeriodProps) {
         <span>{locale.prefixPeriod || DEFAULT_LOCALE_EN.prefixPeriod}</span>
       )}
 
-      <Select<PeriodType, BaseOptionType>
-        key={JSON.stringify(locale)}
-        defaultValue={value}
-        value={value}
-        onChange={handleChange}
-        options={options}
-        className={selectClassName}
-        popupClassName={popupClassName}
-        disabled={disabled}
-        suffixIcon={readOnly ? null : undefined}
-        open={readOnly ? false : undefined}
-        data-testid='select-period'
-        allowClear={allowClear}
-        getPopupContainer={getPopupContainer}
-      />
+      {renderDropdown ? renderDropdown({
+        defaultValue: value,
+        value: value,
+        onChange: handleChange,
+        options: options,
+        disabled: disabled
+      }) : (
+        <Select<PeriodType, BaseOptionType>
+          key={JSON.stringify(locale)}
+          defaultValue={value}
+          value={value}
+          onChange={handleChange}
+          options={options}
+          className={selectClassName}
+          popupClassName={popupClassName}
+          disabled={disabled}
+          suffixIcon={readOnly ? null : undefined}
+          open={readOnly ? false : undefined}
+          data-testid='select-period'
+          allowClear={allowClear}
+          getPopupContainer={getPopupContainer}
+        />
+      )}
     </div>
   )
 }

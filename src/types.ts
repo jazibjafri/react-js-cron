@@ -1,5 +1,5 @@
 import { ButtonProps, SelectProps } from 'antd'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 // External props
 
@@ -232,6 +232,8 @@ export interface CronProps {
    * container, for example, when using a modal or a specific layout.
    */
   getPopupContainer?: () => HTMLElement
+
+  customDropdown?: () => ReactNode
 }
 export interface Locale {
   everyText?: string

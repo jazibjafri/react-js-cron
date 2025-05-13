@@ -252,8 +252,9 @@ export default function CustomSelect(props: CustomSelectProps) {
   )
 
   if (renderDropdown) {
-    return <>
-    {renderDropdown({
+    console.log('rendering')
+
+    return <>{renderDropdown({
       mode: mode === 'single' && !periodicityOnDoubleClick ? undefined : 'multiple',
       value: stringValue,
       tagRender: renderTag,
@@ -261,8 +262,7 @@ export default function CustomSelect(props: CustomSelectProps) {
       onSelect: onOptionClick,
       onDeselect: onOptionClick,
       disabled: disabled
-    })}
-    </>
+    })}</>
   }
 
   return (

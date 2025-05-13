@@ -20,6 +20,7 @@ package-lock.json
 # Authorize
 
 ## folders
+!/dist/
 !/.github/
 !/.storybook/
 !/.yarn/

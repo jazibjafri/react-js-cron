@@ -237,11 +237,16 @@ export interface CronProps {
 }
 
 export interface DropdownProps<V = any, O = any> {
-  defaultValue: V
+  defaultValue?: V
   value: V
-  onChange: ((value: V, option?: O | O[] | undefined) => void) | undefined
+  onChange?: ((value: V, option?: O | O[] | undefined) => void) | undefined
   options: O[]
   disabled?: boolean
+  mode?: "multiple" | "tags" | undefined
+  onClear?: (() => void)
+  tagRender?: (props: any) => React.ReactElement
+  onSelect?: (newValueOption: string) => (() => void) | undefined
+  onDeselect?: (newValueOption: string) => (() => void) | undefined
 }
 export interface Locale {
   everyText?: string
@@ -382,6 +387,7 @@ export interface PeriodProps
 }
 export interface MonthsProps extends FieldProps {
   humanizeLabels: boolean
+  renderDropdown?: (props: DropdownProps) => ReactNode
 }
 export interface MonthDaysProps extends FieldProps {
   weekDays?: number[]
@@ -434,6 +440,7 @@ export interface CustomSelectProps
   mode: Mode
   filterOption?: FilterOption
   getPopupContainer?: () => HTMLElement
+  renderDropdown?: (props: DropdownProps) => ReactNode
 }
 export type SetValueNumbersOrUndefined = Dispatch<
   SetStateAction<number[] | undefined>

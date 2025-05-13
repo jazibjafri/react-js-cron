@@ -26,6 +26,7 @@ export default function CustomSelect(props: CustomSelectProps) {
     allowClear,
     filterOption = () => true,
     getPopupContainer,
+    renderDropdown,
     ...otherProps
   } = props
 
@@ -249,6 +250,20 @@ export default function CustomSelect(props: CustomSelectProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [className, grid, clockFormat, period]
   )
+
+  if (renderDropdown) {
+    return <>
+    {renderDropdown({
+      mode: mode === 'single' && !periodicityOnDoubleClick ? undefined : 'multiple',
+      value: stringValue,
+      tagRender: renderTag,
+      options: options,
+      onSelect: onOptionClick,
+      onDeselect: onOptionClick,
+      disabled: disabled
+    })}
+    </>
+  }
 
   return (
     <Select<string[] | undefined>

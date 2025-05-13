@@ -324,6 +324,7 @@ export default function Cron(props: CronProps) {
                 allowClear={dropdownsConfig?.months?.allowClear ?? allowClear}
                 filterOption={dropdownsConfig?.months?.filterOption}
                 getPopupContainer={getPopupContainer}
+                renderDropdown={renderDropdown}
               />
             )}
 

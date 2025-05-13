@@ -26,7 +26,14 @@ export interface CronProps {
     dropdownsConfig?: DropdownsConfig;
     locale?: Locale;
     getPopupContainer?: () => HTMLElement;
-    customDropdown?: () => ReactNode;
+    renderDropdown?: (props: DropdownProps) => ReactNode;
+}
+export interface DropdownProps<V = any, O = any> {
+    defaultValue: V;
+    value: V;
+    onChange: ((value: V, option?: O | O[] | undefined) => void) | undefined;
+    options: O[];
+    disabled?: boolean;
 }
 export interface Locale {
     everyText?: string;
@@ -123,6 +130,7 @@ export interface PeriodProps extends Omit<FieldProps, 'value' | 'setValue' | 'pe
     shortcuts: Shortcuts;
     allowedPeriods: PeriodType[];
     getPopupContainer?: () => HTMLElement;
+    renderDropdown?: (props: DropdownProps) => ReactNode;
 }
 export interface MonthsProps extends FieldProps {
     humanizeLabels: boolean;

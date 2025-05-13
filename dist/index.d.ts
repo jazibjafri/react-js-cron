@@ -28,7 +28,14 @@ interface CronProps {
     dropdownsConfig?: DropdownsConfig;
     locale?: Locale;
     getPopupContainer?: () => HTMLElement;
-    customDropdown?: () => ReactNode;
+    renderDropdown?: (props: DropdownProps) => ReactNode;
+}
+interface DropdownProps<V = any, O = any> {
+    defaultValue: V;
+    value: V;
+    onChange: ((value: V, option?: O | O[] | undefined) => void) | undefined;
+    options: O[];
+    disabled?: boolean;
 }
 interface Locale {
     everyText?: string;
@@ -125,6 +132,7 @@ interface PeriodProps extends Omit<FieldProps, 'value' | 'setValue' | 'period' |
     shortcuts: Shortcuts;
     allowedPeriods: PeriodType[];
     getPopupContainer?: () => HTMLElement;
+    renderDropdown?: (props: DropdownProps) => ReactNode;
 }
 interface MonthsProps extends FieldProps {
     humanizeLabels: boolean;
@@ -248,4 +256,4 @@ declare namespace converter_d {
   };
 }
 
-export { AllowEmpty, Classes, ClearButtonAction, ClearButtonProps, Clicks, ClockFormat, Cron, CronError, CronProps, CronType, CustomSelectProps, DefaultLocale, DropdownConfig, DropdownsConfig, FieldProps, FilterOption, HoursProps, LeadingZero, LeadingZeroType, Locale, MinutesProps, Mode, MonthDaysProps, MonthsProps, OnError, OnErrorFunction, PeriodProps, PeriodType, SetInternalError, SetValue, SetValueFunction, SetValueFunctionExtra, SetValueNumbersOrUndefined, SetValuePeriod, Shortcuts, ShortcutsType, ShortcutsValues, Unit, WeekDaysProps, converter_d as converter, Cron as default };
+export { AllowEmpty, Classes, ClearButtonAction, ClearButtonProps, Clicks, ClockFormat, Cron, CronError, CronProps, CronType, CustomSelectProps, DefaultLocale, DropdownConfig, DropdownProps, DropdownsConfig, FieldProps, FilterOption, HoursProps, LeadingZero, LeadingZeroType, Locale, MinutesProps, Mode, MonthDaysProps, MonthsProps, OnError, OnErrorFunction, PeriodProps, PeriodType, SetInternalError, SetValue, SetValueFunction, SetValueFunctionExtra, SetValueNumbersOrUndefined, SetValuePeriod, Shortcuts, ShortcutsType, ShortcutsValues, Unit, WeekDaysProps, converter_d as converter, Cron as default };
